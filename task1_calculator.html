@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html onkeydown="key_event(event)">
+	<head>
+		<title>calculator</title>
+		<!---<meta name="viewport" content="width=device-width,initial-scale=1.0">---->
+		<link rel="stylesheet" href="task1.css">
+	</head>
+	<body>
+		<div id="calc">
+			<div id="calc1">
+				<input type="text" id="inpt" value="" autofocus placeholder="1+2*3/4">
+			</div>
+			<div id="calc2">
+				<div>
+					<button onclick="input_value('AC')" style="color:red;">AC</button>
+					<button onclick="input_value('DE')" style="color:red;">DE</button>
+					<button onclick="input_value('.')">.</button>
+					<button onclick="input_value('/')" style="color:green;"><b>/</b></button>
+				</div>
+				<div>
+					<button onclick="input_value(7)">7</button>
+					<button onclick="input_value(8)">8</button>
+					<button onclick="input_value(9)">9</button>
+					<button onclick="input_value('*')" style="color:green;"><b>*</b></button>
+				</div>
+				<div>
+					<button onclick="input_value(4)">4</button>
+					<button onclick="input_value(5)">5</button>
+					<button onclick="input_value(6)">6</button>
+					<button onclick="input_value('-')" style="color:green;"><b>-</b></button>
+				</div>
+				<div>
+					<button onclick="input_value(1)">1</button>
+					<button onclick="input_value(2)">2</button>
+					<button onclick="input_value(3)">3</button>
+					<button onclick="input_value('+')" style="color:green;"><b>+</b></button>
+				</div>
+				<div>
+					<button onclick="input_value('00')">00</button>
+					<button onclick="input_value('0')">0</button>
+					<button onclick="input_value('=')" style="width:138px;"><b>=</b></button>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+	var inpt=document.getElementById("inpt");
+	function input_value(n){
+		if(n=="="){
+			val=eval(inpt.value);
+			if(inpt.value!=""){
+				inpt.value=val;
+			}
+		}
+		else if(n=="AC"){
+			inpt.value="";
+		}
+		else if(n=="DE"){
+			inpt.value=inpt.value.substring(0,inpt.value.length-1);
+		}
+		else{
+			inpt.value+=n;
+		}
+	}
+	 
+	function key_event(event){
+		if(event.key=="Enter"){
+			input_value('=');
+		}
+	}
+	
+	
+	</script>
+	
+</html>
